@@ -11,6 +11,7 @@ class Server {
 
     constructor(name) {
         this.name = name;
+        this.logs = [];
     }
 
     listenForLog() {
@@ -20,6 +21,7 @@ class Server {
                 var line = data[index].trim();
                 if (line !== '\n' && line !== '') {
                     console.log('Console Output: "', data[index].trim(), '"');
+                    this.logs.push(data[index].trim());
                 }
             });
         });
@@ -48,7 +50,7 @@ class Server {
                 // console.log('LOG OUTPUT: ', stdout);
             }
         });
-        
+
         try {
             this.listenForLog();
 
