@@ -1,6 +1,15 @@
 const ServerGroup = require('./objects/ServerGroup');
 
-new ServerGroup('Lobby').startServer(10);
+const sg = new ServerGroup('Lobby');
+
+const fs = require('fs');
+const str = JSON.stringify(sg, null, 4);
+fs.writeFile('sg.json', str, (error) => {
+    if (error)
+        console.log(error);
+});
+
+
 
 // const net = require('net');
 // var HOST = '127.0.0.1';

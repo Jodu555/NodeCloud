@@ -7,8 +7,6 @@ const command = 'java -jar spigot.jar';
 
 class Server {
 
-    process;
-
     constructor(name) {
         this.name = name;
         this.logs = [];
