@@ -9,7 +9,6 @@ class ServerGroup {
         this.version = version;
     }
 
-
     broadcastCommand(command) {
         this.servers.forEach(server => {
             server.sendCommand(command);
@@ -22,7 +21,7 @@ class ServerGroup {
             console.log(serverName);
             this.server = new Server(serverName);
             this.servers.push(this.server);
-            // this.server.start();
+            this.server.start();
         }
     }
 

@@ -1,10 +1,14 @@
+const { CommandManager, Command } = require('@jodu555/commandmanager');
+const commandManager = CommandManager.createCommandManager(process.stdin, process.stdout);
 const ServerGroup = require('./classes/ServerGroup');
 
-const sg = new ServerGroup('Lobby');
 
-const fs = require('fs');
-const str = JSON.stringify(sg, null, 4);
-fs.writeFile('sg.json', str, (error) => {
-    if (error)
-        console.log(error);
-});
+
+commandManager.registerCommand(new Command('logs', 'logs', 'Prints all the logs from the server', () => {
+    console.log(sg.servers[0].logs);
+}))
+
+
+const sg = new ServerGroup('Lobby');
+sg.startServer();
+
